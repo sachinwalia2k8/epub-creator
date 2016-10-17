@@ -26,15 +26,16 @@ import coza.opencollab.epub.creator.model.Content;
 import coza.opencollab.epub.creator.model.EpubBook;
 import coza.opencollab.epub.creator.model.Landmark;
 import coza.opencollab.epub.creator.model.TocLink;
-import java.util.ArrayList;
-import java.util.List;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.htmlcleaner.CleanerProperties;
 import org.htmlcleaner.ContentNode;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.PrettyXmlSerializer;
 import org.htmlcleaner.Serializer;
 import org.htmlcleaner.TagNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Default implementation of the TocCreator. This follows EPUB3 standards to
@@ -88,7 +89,6 @@ public class TocCreatorDefault implements TocCreator {
     /**
      * Builds the TOC HTML content from the EpubBook TocLinks
      *
-     * @param book the EpubBook
      * @return the TOC HTML String
      */
     private String createTocHtml(List<TocLink> links, List<Landmark> landmarks, String tocHtml) {
@@ -127,7 +127,7 @@ public class TocCreatorDefault implements TocCreator {
      * Adds landmarks to the Navigation Document
      *
      * @param tagNode
-     * @param links
+     * @param landmarks
      */
     private void addLandmarks(TagNode tagNode, List<Landmark> landmarks) {
         TagNode navNode = tagNode.findElementByAttValue("epub:type", "landmarks", true, false);
@@ -141,8 +141,8 @@ public class TocCreatorDefault implements TocCreator {
     /**
      * Builds an link tag for the TOC
      *
-     * @param content
-     * @return
+     * @param link
+     * @return TagNode
      */
     private TagNode buildLinkNode(TocLink link) {
         TagNode linkNode = new TagNode("li");
@@ -159,7 +159,7 @@ public class TocCreatorDefault implements TocCreator {
     /**
      * Builds an link tag for the TOC landmarks
      *
-     * @param content
+     * @param landmark
      * @return
      */
     private TagNode buildLandMarkNode(Landmark landmark) {
