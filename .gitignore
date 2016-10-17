@@ -2,3 +2,18 @@
 test.epub
 nb-configuration.xml
 nbactions.xml
+# Eclipse specific settings
+.classpath
+.project
+.settings
+
+# IntelliJ Idea settings
+.idea
+*.iml
+
+# Netbeans settings
+nb-configuration.xml
+nbproject
+
+# Binaries
+target

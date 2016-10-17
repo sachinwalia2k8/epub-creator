@@ -3,22 +3,15 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>coza.opencollab</groupId>
     <artifactId>epub-creator</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
-    
-    <scm>
-        <connection>scm:git:git@github.com:OpenCollabZA/epub-creator.git</connection>
-        <url>scm:git:git@github.com:OpenCollabZA/epub-creator.git</url>
-        <developerConnection>scm:git:git@github.com:OpenCollabZA/epub-creator.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -41,34 +34,39 @@
             <artifactId>commons-collections</artifactId>
             <version>3.2.1</version>
         </dependency>
-        
+
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.2</version>
             </plugin>
         </plugins>
     </build>
-    
-    <distributionManagement>
+    <repositories>
         <repository>
-            <id>oc-nexus-releases</id>
-            <name>OpenCollab Nexus Release Repo</name>
-            <url>
-                http://nexus.opencollab.co.za/nexus/content/repositories/releases
-            </url>
+            <id>apache</id>
+            <url>https://repository.apache.org/content/repositories/snapshots</url>
         </repository>
-        <snapshotRepository>
-            <id>oc-nexus-snapshot</id>
-            <name>OpenCollab Nexus Snapshot Repo</name>
-            <url>
-                http://nexus.opencollab.co.za/nexus/content/repositories/snapshots
-            </url>
-        </snapshotRepository>
-    </distributionManagement>
-    
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
